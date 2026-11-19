@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "templateVersion": "2.0.0",
+  "kind": "platform",
+  "platform": "google-ad-library",
+  "endpointCount": 3,
+  "endpoints": [
+    "google-ad-library/ad",
+    "google-ad-library/advertiser-search",
+    "google-ad-library/company-ads"
+  ],
+  "landingPage": "https://socq.ai/apis/google-ad-library",
+  "docsPage": "https://docs.socq.ai/api-manual/google-ad-library/overview",
+  "generatedFrom": "SocQAPI/socq-example-template"
+}

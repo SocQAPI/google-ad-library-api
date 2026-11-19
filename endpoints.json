@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "platform": "google-ad-library",
+  "platformName": "Google Ad Library",
+  "baseUrl": "https://api.socq.ai",
+  "creditUsd": 0.005,
+  "endpoints": [
+    {
+      "publicId": "google-ad-library/ad",
+      "name": "Google Ad Library Ad API",
+      "description": "Retrieve one public Google Ads Transparency Center creative from its exact URL, returning advertiser identity, copy, media, delivery dates, regions, format, destination, and available impressions in a normalized record.",
+      "method": "POST",
+      "path": "/v1/google-ad-library/ad",
+      "payload": "payloads/ad.json",
+      "launchedAt": "2026-08-11",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 1,
+        "estimateInputField": "url",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/google-ad-library/ad",
+      "landingUrl": "https://socq.ai/apis/google-ad-library/ad",
+      "required": [
+        "url"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public content or product URL."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "publicId": "google-ad-library/advertiser-search",
+      "name": "Google Ad Library Advertiser Search API",
+      "description": "Discover public Google Ads Transparency Center advertiser candidates by query and optional region, returning normalized identity, website, logo, region, and available ad-count fields.",
+      "method": "POST",
+      "path": "/v1/google-ad-library/advertiser-search",
+      "payload": "payloads/advertiser-search.json",
+      "launchedAt": "2026-08-11",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/google-ad-library/advertiser-search",
+      "landingUrl": "https://socq.ai/apis/google-ad-library/advertiser-search",
+      "required": [
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "region": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "publicId": "google-ad-library/company-ads",
+      "name": "Google Ad Library Company Ads API",
+      "description": "Collect public Google Ads Transparency Center creatives for a company domain or advertiser ID with optional topic, region, date, surface, format, and bounded result filters.",
+      "method": "POST",
+      "path": "/v1/google-ad-library/company-ads",
+      "payload": "payloads/company-ads.json",
+      "launchedAt": "2026-08-11",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 40,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/google-ad-library/company-ads",
+      "landingUrl": "https://socq.ai/apis/google-ad-library/company-ads",
+      "required": [],
+      "requiredAnyOf": [
+        [
+          "advertiser_id"
+        ],
+        [
+          "domain"
+        ]
+      ],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "advertiser_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "domain": {
+            "type": "string",
+            "minLength": 1
+          },
+          "end_date": {
+            "type": "string",
+            "minLength": 1
+          },
+          "format": {
+            "type": "string",
+            "minLength": 1
+          },
+          "platform": {
+            "type": "string",
+            "minLength": 1
+          },
+          "region": {
+            "type": "string",
+            "minLength": 1
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 40,
+            "maximum": 2000,
+            "default": 40,
+            "multipleOf": 40
+          },
+          "start_date": {
+            "type": "string",
+            "minLength": 1
+          },
+          "topic": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "advertiser_id"
+            ]
+          },
+          {
+            "required": [
+              "domain"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
